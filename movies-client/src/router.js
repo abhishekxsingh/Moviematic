@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from "react";
 import axios from 'axios';
 import Card from "./movie-page/cards";
-import Navbar from "./movie-page/navbar";
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";;
 
 const ReactRouter = () => {
-
 
   const [movieList, setMovieList] = useState([]);
   const getMovies = async () => {
@@ -21,28 +19,21 @@ const ReactRouter = () => {
       console.error(error);
     }
   }
-
   useEffect(()=>{
     getMovies()
   },[])
-
-
-    const router = createBrowserRouter([
-      
-        {
-    
-            path: "/",
-            element: <Card movieList={movieList}/>,
-        },
-
-        {
-         
+  const router = createBrowserRouter([
+      {
+        path: "/",
+        element: <Card movieList={movieList}/>,
       },
+      {
        
-      ]);
-      
-
-    return <RouterProvider router={router} />
+      },
+  ]);
+      return <RouterProvider router={router} />
 }
+
+
 
 export default ReactRouter;
